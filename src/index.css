@@ -1,0 +1,1799 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #E50914;
+  --background-color: #141414;
+  --light-bg: #181818;
+  --text-color: #FFFFFF;
+  --text-secondary: #E5E5E5;
+  
+  /* Enhanced color variables for perfect contrast */
+  --text-primary-light: #1a1a1a;
+  --text-secondary-light: #4a4a4a;
+  --text-tertiary-light: #6b7280;
+  --text-primary-dark: #ffffff;
+  --text-secondary-dark: #e5e5e5;
+  --text-tertiary-dark: #9ca3af;
+  
+  --bg-primary-light: #ffffff;
+  --bg-secondary-light: #f8f9fa;
+  --bg-tertiary-light: #e9ecef;
+  --bg-quaternary-light: #f3f4f6;
+  
+  --bg-primary-dark: #141414;
+  --bg-secondary-dark: #1a1a1a;
+  --bg-tertiary-dark: #262626;
+  --bg-quaternary-dark: #1f2937;
+  
+  --border-light: #e5e7eb;
+  --border-dark: #374151;
+  --border-hover-light: #d1d5db;
+  --border-hover-dark: #4b5563;
+  
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium-light: rgba(0, 0, 0, 0.15);
+  --shadow-heavy-light: rgba(0, 0, 0, 0.25);
+  --shadow-dark: rgba(0, 0, 0, 0.3);
+  --shadow-medium-dark: rgba(0, 0, 0, 0.5);
+  --shadow-heavy-dark: rgba(0, 0, 0, 0.7);
+  
+  /* Gradient variables for hero sections */
+  --hero-gradient-light: linear-gradient(to bottom, rgba(248, 249, 250, 0.1), rgba(248, 249, 250, 0.8), rgba(248, 249, 250, 0.95));
+  --hero-gradient-dark: linear-gradient(to bottom, rgba(20, 20, 20, 0.1), rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.95));
+}
+
+/* Enhanced system preference detection */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+  }
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  
+  /* Enhanced transitions for theme switching */
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Light mode defaults */
+  background-color: var(--bg-primary-light);
+  color: var(--text-primary-light);
+}
+
+/* Enhanced dark mode styles */
+.dark body {
+  background-color: var(--bg-primary-dark);
+  color: var(--text-primary-dark);
+}
+
+/* Enhanced scrollbar hiding */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Enhanced smooth transitions for all theme-related properties */
+* {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== NETFLIX-STYLE DESIGN SYSTEM ===== */
+
+/* Netflix Button System - Enhanced for Mobile */
+.netflix-btn {
+  @apply inline-flex items-center justify-center gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold text-xs sm:text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl;
+  min-height: 44px; /* Minimum touch target for mobile */
+  min-width: 44px;
+}
+
+.netflix-btn-primary {
+  @apply bg-gradient-to-r from-[#E50914] to-[#f6121d] hover:from-[#f6121d] hover:to-[#E50914] text-white focus:ring-[#E50914];
+}
+
+.netflix-btn-secondary {
+  @apply bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 backdrop-blur-md focus:ring-white/50;
+}
+
+.netflix-btn-tertiary {
+  @apply bg-gray-600/50 hover:bg-gray-700/50 text-white border border-gray-500/30 hover:border-gray-400/50 backdrop-blur-md focus:ring-gray-500;
+}
+
+.netflix-btn-icon {
+  @apply p-2 sm:p-3 rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/20 hover:border-white/30 backdrop-blur-md focus:ring-white/50;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Netflix Navigation Links - Mobile Optimized */
+.netflix-nav-link {
+  @apply hover:text-[#E50914] transition-colors duration-200 font-medium text-xs sm:text-sm lg:text-base px-2 sm:px-3 py-2 rounded-lg flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800;
+  min-height: 44px;
+}
+
+.netflix-nav-link-active {
+  @apply text-[#E50914] bg-red-50 dark:bg-red-900/20;
+}
+
+.netflix-mobile-nav-link {
+  @apply hover:text-[#E50914] transition-colors duration-200 font-medium py-3 px-4 rounded-lg flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800;
+  min-height: 48px;
+}
+
+.netflix-mobile-nav-link-active {
+  @apply text-[#E50914] bg-red-50 dark:bg-red-900/20;
+}
+
+/* Netflix Search Input - Responsive */
+.netflix-search-input {
+  @apply bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg py-2 px-3 lg:px-4 pl-8 sm:pl-10 pr-16 sm:pr-20 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#E50914] focus:border-transparent text-gray-900 dark:text-white w-full sm:w-[180px] lg:w-[240px] transition-all duration-200 sm:focus:w-[200px] lg:focus:w-[280px] placeholder-gray-500 dark:placeholder-gray-400;
+}
+
+.netflix-search-input-mobile {
+  @apply bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg py-3 px-4 pl-10 pr-20 text-sm focus:outline-none focus:ring-2 focus:ring-[#E50914] focus:border-transparent text-gray-900 dark:text-white w-full placeholder-gray-500 dark:placeholder-gray-400;
+}
+
+/* Netflix Cards - Mobile Responsive */
+.netflix-card {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+}
+
+.netflix-content-card {
+  @apply transition-transform duration-300 hover:scale-105 hover:z-10;
+}
+
+.netflix-content-grid {
+  @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-4 md:gap-6;
+}
+
+/* Netflix Filter Pills - Mobile Friendly */
+.netflix-filter-pill {
+  @apply inline-flex items-center gap-1 px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full font-medium transition-all duration-200;
+}
+
+.netflix-filter-pill-blue {
+  @apply bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300;
+}
+
+.netflix-filter-pill-green {
+  @apply bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300;
+}
+
+.netflix-filter-pill-purple {
+  @apply bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300;
+}
+
+.netflix-filter-pill-close {
+  @apply hover:bg-black/10 dark:hover:bg-white/10 rounded-full p-0.5 transition-colors duration-200;
+}
+
+/* Netflix Error Card */
+.netflix-error-card {
+  @apply bg-red-100 dark:bg-red-900/50 border border-red-300 dark:border-red-700 rounded-lg p-4 transition-colors duration-300;
+}
+
+/* Netflix Loading Spinner */
+.netflix-spinner {
+  @apply w-6 h-6 sm:w-8 sm:h-8 border-4 border-gray-200 dark:border-gray-700 border-t-[#E50914] rounded-full animate-spin;
+}
+
+/* Netflix Hero Section - Mobile Responsive */
+.netflix-hero {
+  @apply relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[85vh] overflow-hidden;
+}
+
+.netflix-hero-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-gray-50 via-gray-50/80 to-gray-50/20 dark:from-[#141414] dark:via-[#141414]/80 dark:to-[#141414]/20 transition-colors duration-500;
+}
+
+/* Netflix Content Row - Mobile Optimized */
+.netflix-content-row {
+  @apply mb-6 sm:mb-8 relative;
+}
+
+.netflix-content-row-title {
+  @apply text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 px-2 sm:px-4 md:px-8 text-gray-900 dark:text-white transition-colors duration-300;
+}
+
+.netflix-content-row-container {
+  @apply flex overflow-x-auto scrollbar-hide pb-3 sm:pb-4 px-2 sm:px-4 md:px-8 gap-2 sm:gap-3 scroll-smooth;
+}
+
+/* Netflix Player Controls */
+.netflix-player-btn {
+  @apply p-2 sm:p-3 rounded-full bg-black/60 hover:bg-black/80 text-white transition-all duration-200 hover:scale-110 backdrop-blur-md border border-white/20;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.netflix-player-btn-primary {
+  @apply bg-white hover:bg-gray-100 text-black font-semibold;
+}
+
+/* Netflix Modal - Mobile Responsive */
+.netflix-modal {
+  @apply fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-2 sm:p-4 animate-fadeSlideUp;
+}
+
+.netflix-modal-content {
+  @apply relative w-full max-w-xs sm:max-w-4xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl;
+}
+
+.netflix-modal-close {
+  @apply absolute -top-8 sm:-top-10 right-0 text-white hover:text-gray-300 transition-colors duration-200 flex items-center gap-2 bg-black/50 px-3 sm:px-4 py-2 rounded-lg backdrop-blur-sm text-sm;
+}
+
+/* Netflix Form Elements - Mobile Optimized */
+.netflix-input {
+  @apply w-full px-3 sm:px-4 py-3 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#E50914] focus:border-transparent placeholder-gray-300 backdrop-blur-sm transition-all duration-200 text-sm sm:text-base;
+}
+
+.netflix-select {
+  @apply w-full px-3 py-2 text-sm bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E50914] text-gray-900 dark:text-white;
+}
+
+/* Netflix Typography - Responsive */
+.netflix-title {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white;
+}
+
+.netflix-subtitle {
+  @apply text-lg sm:text-xl text-gray-600 dark:text-gray-400 italic font-light;
+}
+
+.netflix-body {
+  @apply text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed;
+}
+
+.netflix-caption {
+  @apply text-xs sm:text-sm text-gray-500 dark:text-gray-400;
+}
+
+/* Netflix Animations */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+/* Enhanced theme toggle animation */
+@keyframes themeToggleSlide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Chatbot specific animations */
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Voice search specific animations */
+@keyframes voicePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes voiceWave {
+  0%, 100% {
+    height: 8px;
+  }
+  25% {
+    height: 16px;
+  }
+  50% {
+    height: 12px;
+  }
+  75% {
+    height: 20px;
+  }
+}
+
+/* Like button animation */
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.3);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.3);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+.animate-fadeSlideUp {
+  animation: fadeSlideUp 0.6s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200px 100%;
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-voice-pulse {
+  animation: voicePulse 1.5s ease-in-out infinite;
+}
+
+.animate-voice-wave {
+  animation: voiceWave 1s ease-in-out infinite;
+}
+
+.animate-heart-beat {
+  animation: heartBeat 1.3s ease-in-out;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+
+.animation-delay-800 {
+  animation-delay: 0.8s;
+}
+
+/* Enhanced scrollbar for webkit browsers with perfect theme support */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover-light);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--bg-secondary-dark);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--border-dark);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover-dark);
+}
+
+/* Enhanced focus styles for accessibility with perfect theme support */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  transition: outline 0.2s ease;
+}
+
+.dark button:focus-visible,
+.dark input:focus-visible,
+.dark select:focus-visible,
+.dark textarea:focus-visible,
+.dark a:focus-visible {
+  outline-color: #60a5fa;
+}
+
+/* Enhanced loading animation with perfect theme support */
+.loading-spinner {
+  border: 4px solid var(--border-light);
+  border-left: 4px solid #E50914;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+.dark .loading-spinner {
+  border: 4px solid var(--border-dark);
+  border-left: 4px solid #E50914;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Enhanced hover effects with perfect theme support */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px var(--shadow-medium-light);
+}
+
+.dark .hover-lift:hover {
+  box-shadow: 0 10px 25px var(--shadow-medium-dark);
+}
+
+/* Enhanced glass morphism effect with perfect theme support */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced text contrast classes for perfect WCAG compliance */
+.text-high-contrast {
+  color: var(--text-primary-light);
+}
+
+.dark .text-high-contrast {
+  color: var(--text-primary-dark);
+}
+
+.text-medium-contrast {
+  color: var(--text-secondary-light);
+}
+
+.dark .text-medium-contrast {
+  color: var(--text-secondary-dark);
+}
+
+.text-low-contrast {
+  color: var(--text-tertiary-light);
+}
+
+.dark .text-low-contrast {
+  color: var(--text-tertiary-dark);
+}
+
+/* Enhanced background classes with perfect theme adaptation */
+.bg-primary {
+  background-color: var(--bg-primary-light);
+}
+
+.dark .bg-primary {
+  background-color: var(--bg-primary-dark);
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary-light);
+}
+
+.dark .bg-secondary {
+  background-color: var(--bg-secondary-dark);
+}
+
+.bg-tertiary {
+  background-color: var(--bg-tertiary-light);
+}
+
+.dark .bg-tertiary {
+  background-color: var(--bg-tertiary-dark);
+}
+
+.bg-quaternary {
+  background-color: var(--bg-quaternary-light);
+}
+
+.dark .bg-quaternary {
+  background-color: var(--bg-quaternary-dark);
+}
+
+/* Enhanced border classes with perfect theme adaptation */
+.border-theme {
+  border-color: var(--border-light);
+}
+
+.dark .border-theme {
+  border-color: var(--border-dark);
+}
+
+.border-theme-hover:hover {
+  border-color: var(--border-hover-light);
+}
+
+.dark .border-theme-hover:hover {
+  border-color: var(--border-hover-dark);
+}
+
+/* Enhanced theme toggle specific styles */
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 1.75rem;
+  border-radius: 50px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.theme-toggle-slider {
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: white;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle-slider.dark {
+  transform: translateX(1.75rem);
+}
+
+/* Enhanced hero section gradients */
+.hero-gradient-light {
+  background: var(--hero-gradient-light);
+}
+
+.hero-gradient-dark {
+  background: var(--hero-gradient-dark);
+}
+
+/* Enhanced card shadows */
+.card-shadow {
+  box-shadow: 0 4px 6px var(--shadow-light);
+}
+
+.dark .card-shadow {
+  box-shadow: 0 4px 6px var(--shadow-dark);
+}
+
+.card-shadow-lg {
+  box-shadow: 0 10px 15px var(--shadow-medium-light);
+}
+
+.dark .card-shadow-lg {
+  box-shadow: 0 10px 15px var(--shadow-medium-dark);
+}
+
+.card-shadow-xl {
+  box-shadow: 0 20px 25px var(--shadow-heavy-light);
+}
+
+.dark .card-shadow-xl {
+  box-shadow: 0 20px 25px var(--shadow-heavy-dark);
+}
+
+/* Enhanced selection styles */
+::selection {
+  background-color: #E50914;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #E50914;
+  color: white;
+}
+
+/* Chatbot specific styles - Mobile Responsive */
+.chatbot-message {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.chatbot-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chatbot-typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #9ca3af;
+  animation: chatbot-typing 1.4s infinite ease-in-out;
+}
+
+@media (min-width: 640px) {
+  .chatbot-typing-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+.chatbot-typing-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.chatbot-typing-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes chatbot-typing {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Voice search specific styles - Mobile Responsive */
+.voice-search-button {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.voice-search-button.listening::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.3) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  animation: voicePulse 1.5s ease-in-out infinite;
+}
+
+.voice-wave {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .voice-wave {
+    gap: 2px;
+  }
+}
+
+.voice-wave-bar {
+  width: 1.5px;
+  background: #ef4444;
+  border-radius: 1px;
+  animation: voiceWave 1s ease-in-out infinite;
+}
+
+@media (min-width: 640px) {
+  .voice-wave-bar {
+    width: 2px;
+  }
+}
+
+.voice-wave-bar:nth-child(1) { animation-delay: 0s; }
+.voice-wave-bar:nth-child(2) { animation-delay: 0.1s; }
+.voice-wave-bar:nth-child(3) { animation-delay: 0.2s; }
+.voice-wave-bar:nth-child(4) { animation-delay: 0.3s; }
+.voice-wave-bar:nth-child(5) { animation-delay: 0.4s; }
+
+/* Responsive design improvements */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  /* Mobile-specific adjustments */
+  .text-responsive {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  
+  .text-responsive-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  /* Improved touch targets for mobile */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing on mobile */
+  .mobile-spacing {
+    padding: 0.75rem;
+  }
+  
+  /* Chatbot mobile adjustments */
+  .chatbot-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    margin: 0;
+  }
+  
+  /* Movie details responsive background */
+  .movie-hero-bg {
+    background-attachment: scroll !important;
+    background-size: cover !important;
+    background-position: center top !important;
+  }
+  
+  /* Enhanced mobile movie details */
+  .movie-details-mobile {
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  /* Mobile navigation improvements */
+  .mobile-nav-item {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin: 0.25rem 0;
+  }
+
+  /* Mobile search improvements */
+  .mobile-search-container {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    margin: 0.5rem;
+  }
+
+  /* Mobile content grid improvements */
+  .mobile-content-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding: 0 0.75rem;
+  }
+
+  /* Mobile hero section improvements */
+  .mobile-hero {
+    height: 50vh;
+    min-height: 400px;
+  }
+
+  .mobile-hero-content {
+    padding: 1rem;
+    bottom: 2rem;
+  }
+
+  /* Mobile modal improvements */
+  .mobile-modal {
+    margin: 0;
+    border-radius: 0;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  /* Mobile form improvements */
+  .mobile-form-input {
+    padding: 0.875rem;
+    font-size: 16px; /* Prevent zoom on iOS */
+    border-radius: 0.75rem;
+  }
+
+  /* Mobile button improvements */
+  .mobile-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.75rem;
+    min-height: 48px;
+  }
+
+  /* Mobile card improvements */
+  .mobile-card {
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 0.5rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  /* Tablet-specific adjustments */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Tablet content grid */
+  .tablet-content-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  /* Tablet navigation */
+  .tablet-nav {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  /* Desktop-specific adjustments */
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  /* Enable parallax effect on larger screens */
+  .movie-hero-bg {
+    background-attachment: fixed;
+  }
+
+  /* Desktop content grid */
+  .desktop-content-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Voice search responsive styles */
+@media (max-width: 768px) {
+  .voice-search-tooltip {
+    display: none;
+  }
+  
+  .voice-search-feedback {
+    font-size: 0.75rem;
+    padding: 0.5rem;
+  }
+}
+
+/* Enhanced accessibility for voice search */
+@media (prefers-reduced-motion: reduce) {
+  .voice-search-button.listening::before {
+    animation: none;
+    opacity: 0.3;
+  }
+  
+  .voice-wave-bar {
+    animation: none;
+    height: 12px;
+  }
+  
+  /* Disable all animations for users who prefer reduced motion */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .text-high-contrast {
+    color: #000000;
+  }
+  
+  .dark .text-high-contrast {
+    color: #ffffff;
+  }
+  
+  button, input, select {
+    border: 2px solid currentColor;
+  }
+  
+  .border-theme {
+    border-width: 2px;
+  }
+}
+
+/* Enhanced print styles */
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Improved focus management for better accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Better text readability */
+@media (max-width: 640px) {
+  body {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  input, textarea, select {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+}
+
+/* Improved loading states */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, #2a2a2a 25%, #1a1a1a 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Enhanced error states */
+.error-state {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border: 1px solid #f87171;
+  color: #dc2626;
+}
+
+.dark .error-state {
+  background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+  border: 1px solid #dc2626;
+  color: #fca5a5;
+}
+
+/* Success states */
+.success-state {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  border: 1px solid #4ade80;
+  color: #16a34a;
+}
+
+.dark .success-state {
+  background: linear-gradient(135deg, #14532d 0%, #166534 100%);
+  border: 1px solid #22c55e;
+  color: #86efac;
+}
+
+/* Movie details specific responsive styles */
+.movie-details-hero {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .movie-details-hero {
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+@media (min-width: 769px) {
+  .movie-details-hero {
+    background-attachment: fixed;
+  }
+}
+
+/* Aspect ratio utilities for responsive images */
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-poster {
+  aspect-ratio: 2 / 3;
+}
+
+/* Enhanced backdrop blur for better readability */
+.backdrop-blur-strong {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Responsive text utilities */
+@media (max-width: 640px) {
+  .text-responsive-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+  
+  .text-responsive-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  
+  .text-responsive-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  .text-responsive-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  .text-responsive-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+/* Enhanced movie details background handling */
+.movie-background-container {
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+  .movie-background-container {
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+/* Improved gradient overlays for movie details */
+.movie-gradient-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.5) 30%,
+    rgba(0, 0, 0, 0.7) 60%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+}
+
+.movie-gradient-overlay-mobile {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.6) 30%,
+    rgba(0, 0, 0, 0.8) 60%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+}
+
+/* Enhanced button animations */
+.button-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.button-shimmer:hover::before {
+  left: 100%;
+}
+
+/* Improved glass morphism effects */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.dark .glass-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced movie poster effects */
+.movie-poster-container {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.movie-poster-container:hover {
+  transform: rotateY(5deg) rotateX(5deg);
+}
+
+.movie-poster-glow {
+  position: absolute;
+  inset: -20px;
+  background: linear-gradient(45deg, #E50914, #f6121d, #E50914);
+  border-radius: 20px;
+  opacity: 0;
+  filter: blur(20px);
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.movie-poster-container:hover .movie-poster-glow {
+  opacity: 0.3;
+}
+
+/* Enhanced share menu animations */
+@keyframes shareMenuSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.share-menu {
+  animation: shareMenuSlideIn 0.2s ease-out;
+}
+
+/* Like button specific styles */
+.like-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.like-button.liked {
+  animation: heartBeat 1.3s ease-in-out;
+}
+
+.like-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.like-button.liked::before {
+  width: 100px;
+  height: 100px;
+}
+
+/* Enhanced cast grid animations */
+.cast-grid-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cast-grid-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.dark .cast-grid-item:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Enhanced movie info pills */
+.info-pill {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  border-radius: 50px;
+}
+
+.info-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced responsive grid for cast */
+@media (max-width: 640px) {
+  .cast-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .cast-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cast-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .cast-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1281px) {
+  .cast-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Enhanced movie details responsive typography */
+@media (max-width: 640px) {
+  .movie-title {
+    font-size: 1.75rem;
+    line-height: 2rem;
+  }
+  
+  .movie-tagline {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  
+  .movie-overview {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .movie-title {
+    font-size: 2rem;
+    line-height: 2.25rem;
+  }
+  
+  .movie-tagline {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  .movie-overview {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .movie-title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  
+  .movie-tagline {
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+  }
+  
+  .movie-overview {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+/* Enhanced button hover effects */
+.action-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+}
+
+.action-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.action-button:hover::before {
+  left: 100%;
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced modal animations */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  animation: modalSlideIn 0.3s ease-out;
+  border-radius: 12px;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Enhanced tooltip styles */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+}
+
+.tooltip:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced copy success animation */
+@keyframes copySuccess {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.copy-success {
+  animation: copySuccess 0.3s ease-in-out;
+}
+
+/* Mobile-specific improvements for better UX */
+@media (max-width: 640px) {
+  /* Improve touch targets */
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 0.75rem;
+  }
+
+  /* Better mobile navigation */
+  .mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+  }
+
+  /* Mobile-friendly modals */
+  .mobile-modal-content {
+    margin: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+
+  /* Better mobile forms */
+  .mobile-form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .mobile-form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-primary-light);
+  }
+
+  .dark .mobile-form-label {
+    color: var(--text-primary-dark);
+  }
+
+  /* Mobile-optimized content cards */
+  .mobile-content-card {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .mobile-content-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Mobile search improvements */
+  .mobile-search-results {
+    padding: 1rem;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  /* Mobile chatbot improvements */
+  .mobile-chatbot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    background: white;
+    border-radius: 0;
+  }
+
+  .dark .mobile-chatbot {
+    background: var(--bg-primary-dark);
+  }
+
+  /* Mobile hero improvements */
+  .mobile-hero-title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .mobile-hero-description {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Mobile button group improvements */
+  .mobile-button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .mobile-button-group .netflix-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Tablet-specific improvements */
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Tablet content layout */
+  .tablet-content-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  /* Tablet navigation improvements */
+  .tablet-nav-menu {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  /* Tablet modal improvements */
+  .tablet-modal-content {
+    max-width: 80vw;
+    max-height: 80vh;
+  }
+}
+
+/* Large screen improvements */
+@media (min-width: 1025px) {
+  /* Desktop content layout */
+  .desktop-content-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* Desktop navigation improvements */
+  .desktop-nav-menu {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  /* Desktop modal improvements */
+  .desktop-modal-content {
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+
+  /* Desktop hero improvements */
+  .desktop-hero-content {
+    max-width: 50%;
+    padding: 3rem;
+  }
+}
+
+/* Ultra-wide screen improvements */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Ultra-wide content grid */
+  .ultrawide-content-grid {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Landscape mobile improvements */
+@media (max-width: 896px) and (orientation: landscape) {
+  .landscape-mobile-hero {
+    height: 100vh;
+    min-height: 100vh;
+  }
+
+  .landscape-mobile-content {
+    padding: 1rem 2rem;
+  }
+
+  .landscape-mobile-nav {
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Portrait tablet improvements */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .portrait-tablet-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .portrait-tablet-hero {
+    height: 60vh;
+    min-height: 500px;
+  }
+}
+
+/* Landscape tablet improvements */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .landscape-tablet-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .landscape-tablet-hero {
+    height: 80vh;
+    min-height: 600px;
+  }
+}
