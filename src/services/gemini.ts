@@ -17,7 +17,7 @@ interface ChatMessage {
 
 class HarshaAIService {
   private apiKey: string;
-  private baseUrl = 'https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent';
+  private baseUrl = 'https://generativelanguage.googleapis.com/v1/models/gemini-3-flash-preview:generateContent';
   private chatHistory: ChatMessage[] = [];
 
   constructor() {
